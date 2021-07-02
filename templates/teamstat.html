@@ -1,0 +1,20 @@
+<html>
+{% include "header.html" %}
+
+
+<body>
+    <div class="search-container">
+        <form method="POST" onsubmit="return false">
+            <div class="search-box">
+                <input class="search-input" name="team-name" type="text" placeholder="Team Name">
+                <input class="search-input" name="season-year" type="number" placeholder="Year of Season"
+                    min='{{ seasons[0] }}' max='{{ seasons[-1] }}'>
+                <button type="submit" class="search-button">
+                    View Team Statistics
+                </button>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>

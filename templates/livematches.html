@@ -1,0 +1,40 @@
+<html>
+{% include "header.html" %}
+
+<body>
+    <div class="container">
+        <h1>Live Scoreboard</h1>
+        <div class="title-box">
+            <p>Home Team</p>
+            <p>Away Team</p>
+        </div>
+        {% for message in get_flashed_messages() %}
+        <div class="alert-empty">
+            <p>{{ message }}</p>
+        </div>
+        {% endfor %}
+        {% for fixture in fixtures_data %}
+        <a href="/livematchstat?match_id={{ fixture['match_id'] }}">
+            <p>{{ fixture["league_name"] }}</p>
+            <div class="title-box" id="scoreboard-div">
+                <div class="team">
+                    <img id="home-logo" src="{{ fixture['home_logo'] }}" alt="">
+                    <p id="home-name">{{ fixture["home_name"] }}</p>
+                </div>
+                <div class="scoreboard">
+                    <p id=time-elapsed>{{ fixture["elapsed_time"] }}'</p>
+                    <p id="goals">{{ fixture.home_score }} - {{ fixture.away_score }}</p>
+                </div>
+                <div class="team">
+                    <img id="away-logo" src="{{ fixture['away_logo'] }}" alt="">
+                    <p id="away-name">{{ fixture["away_name"] }}</p>
+                </div>
+            </div>
+        </a>
+        <hr>
+        {% endfor %}
+
+    </div>
+</body>
+
+</html>
